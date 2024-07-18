@@ -43,7 +43,7 @@ def create_vector_db(Url):
                 published_at = comment['time']
 
                 # Merge all columns into a single column with the specified format
-                merged_comment = f"comment is {text} with likes {likes} with user_id {user_id} and published  {published_at}"
+                merged_comment = f"comment is '{text}' with likes(count) {likes} with user_id '{user_id}' and published(time)  '{published_at}'"
 
                 writer.writerow([merged_comment])
     except Exception as ex:
@@ -67,7 +67,7 @@ def get_qa_chain():
     repo_id = "mistralai/Mistral-7B-Instruct-v0.2"
     llm = HuggingFaceEndpoint(repo_id=repo_id, max_length=20, temperature=0.7, token=sec_key)
     system_prompt = (
-        "Use the given context to answer the question. "
+        #"Use the given context to answer the question. "
         "If you don't know the answer, return the most nearest answer. "
         "In the context , details of content of comment start from 'comment is', details of number of likes is starting from 'with likes' then the number of likes,then we have userid(who posted) and its time(date) of publish "
         "Context: {context}"
