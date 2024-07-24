@@ -3,16 +3,14 @@ import pandas as pd
 import csv
 import os
 from langchain_core.prompts import PromptTemplate
-sec_key = "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"
-
-os.environ["HUGGINGFACEHUB_API_TOKEN"] = sec_key
+GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
+sec_key=os.environ["HUGGINGFACEHUB_API_TOKEN"] 
 from langchain_huggingface import HuggingFaceEndpoint
 
 from youtube_comment_downloader import YoutubeCommentDownloader, SORT_BY_POPULAR
 from langchain_community.embeddings import HuggingFaceInstructEmbeddings
 from langchain_google_genai import ChatGoogleGenerativeAI
 import google.generativeai as genai
-apikey="AIzaSyCOll-1nURu72Fv-XMKNx0txTb7J77y5cE"
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 llm = ChatGoogleGenerativeAI(model="gemini-1.5-pro-latest",google_api_key=apikey)
 
